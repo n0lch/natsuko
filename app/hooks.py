@@ -15,13 +15,12 @@ def run(hook_type, *args, **kwargs):
         pass
     else:
         retval = None
-        
         for hook in hooks[hook_type]:
             new_retval = hook(*args, **kwargs)
-            if retval is not None:
+            if new_retval is not None:
                 retval = new_retval
 
-    return retval
+        return retval
 
 class add_hook:
     """A decorator class for adding a hook."""

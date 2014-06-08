@@ -4,15 +4,16 @@ from app import hooks
 
 sys.path.append(os.path.dirname(__file__))
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-import config
 
 app = Flask(__name__)
+app.config.from_pyfile('natsuko_default.cfg')
+app.config.from_pyfile('../natsuko.cfg', silent=True)
 
-for module_name in config.MODULES:
+for module_name in app.config['MODULES']:
     try:
         module = importlib.import_module(module_name)
         hooks.run("module_imported", module_name)
-        
+
         try: # If the module has controllers, we want them
             mod_controllers = importlib.import_module(module_name + ".controllers")
             try:

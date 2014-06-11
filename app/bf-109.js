@@ -10,7 +10,7 @@ function find_partners() {
     var sElement = document.createElement('style');
     sElement.type = 'text/css';
     document.getElementsByTagName('head')[0].appendChild(sElement);
-    sElement.appendChild(document.createTextNode('#suggestion {text-align: center; opacity: 0; visibility: none;}'));
+    sElement.appendChild(document.createTextNode('#suggestion {text-align: center; opacity: 0; visibility: none; position: absolute; height: 6em; top: -6em;}'));
 
     function flash(url) {
         var garbage = 'http://doesnot.ex/';

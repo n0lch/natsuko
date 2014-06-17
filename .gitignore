@@ -1,3 +1,6 @@
+# Natsuko Project user config
+natsuko.cfg
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

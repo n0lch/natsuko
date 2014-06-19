@@ -9,6 +9,15 @@ app = Flask(__name__)
 app.config.from_pyfile('natsuko_default.cfg')
 app.config.from_pyfile('../natsuko.cfg', silent=True)
 
+##  regex router boilerplate
+from werkzeug.routing import BaseConverter
+class RegexConverter(BaseConverter):
+    def __init__(self, url_map, *items):
+        super(RegexConverter, self).__init__(url_map)
+        self.regex = items[0]
+app.url_map.converters['regex'] = RegexConverter
+##  regex support done
+
 for module_name in app.config['MODULES']:
     try:
         module = importlib.import_module(module_name)
